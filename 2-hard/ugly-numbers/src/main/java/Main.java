@@ -1,9 +1,10 @@
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 
 
 public class Main {
@@ -29,9 +30,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader buffer = new BufferedReader(new FileReader(new File(args[0])));
-        String line;
-        while ((line = buffer.readLine()) != null) {
+        for (String line : Files.readLines(new File(args[0]), Charsets.UTF_8)) {
             System.out.println(getUglyCount(line));
         }
     }
